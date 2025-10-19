@@ -7,7 +7,7 @@ import { showErrorToast } from "@shared/utils/showErrorToast";
 import { MSG_SAVE_ERR } from "@features/material/lib/messages";
 
 import { ScanPanel } from "./ScanPanel";
-import styles from "./ScanSection.module.css";
+import styles from "../MainPage.module.css";
 
 import type { ScanCaptureHandle } from "../../../features/material/components/ScanCapture";
 import type { ScanParsed } from "@features/material/types/scan";

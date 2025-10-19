@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { ScanParsed } from "@features/material/types/scan";
 import { ScanCapture } from "@features/material/components/ScanCapture";
 
-import styles from "./ScanPanel.module.css";
+import styles from "../MainPage.module.css";
 
 import type { ScanCaptureHandle } from "@features/material/components/ScanCapture";
 

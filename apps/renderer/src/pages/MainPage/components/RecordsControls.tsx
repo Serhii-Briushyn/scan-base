@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./RecordsControls.module.css";
+import styles from "../MainPage.module.css";
 
 type Props = {
   date: string;

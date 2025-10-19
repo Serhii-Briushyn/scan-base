@@ -20,7 +20,7 @@ type Props = {
   onFocusChange?: (focused: boolean) => void;
 };
 
-const WINDOW_MS = 2000;
+const WINDOW_MS = 200000;
 
 export const ScanCapture = forwardRef<ScanCaptureHandle, Props>(
   ({ onParsed, onError, blurOnParsed = false, onFocusChange }, ref) => {

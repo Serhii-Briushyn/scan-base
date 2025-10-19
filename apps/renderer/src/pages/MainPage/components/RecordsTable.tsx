@@ -1,6 +1,6 @@
 import { FaXmark } from "react-icons/fa6";
 
-import styles from "./RecordsTable.module.css";
+import styles from "../MainPage.module.css";
 
 import type { MaterialRecord } from "@shared/types/material";
 

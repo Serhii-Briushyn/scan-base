@@ -3,12 +3,12 @@ import { useLiveQuery } from "dexie-react-hooks";
 import toast from "react-hot-toast";
 
 import { db } from "@shared/db";
-import { ymd } from "@shared/utils/date";
+import { formatYMD, ymd } from "@shared/utils/date";
 import { exportDailyXlsx } from "@features/excel/lib/exportDailyXlsx";
 import { MSG_DELETE_ERR } from "@features/material/lib/messages";
 import { showErrorToast } from "@shared/utils/showErrorToast";
 
-import styles from "./RecordsSection.module.css";
+import styles from "../MainPage.module.css";
 import { RecordsControls } from "./RecordsControls";
 import { RecordsTable } from "./RecordsTable";
 
@@ -47,7 +47,7 @@ export const RecordsSection = () => {
         canExport={items.length > 0}
       />
       <p>
-        Materiálov za {date} ({items.length})
+        Materiálov za {formatYMD(date, ".")} ({items.length})
       </p>
       <RecordsTable items={items} onDelete={handleDelete} />
     </section>
