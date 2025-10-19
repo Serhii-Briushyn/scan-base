@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 
 import { HashRouter } from "react-router-dom";
 
-import "@app/styles/fonts.css";
-import "@app/styles/globals.css";
-import "@app/styles/vars.css";
+import "@shared/styles/fonts.css";
+import "@shared/styles/globals.css";
+import "@shared/styles/vars.css";
 
 import { App } from "./App";
 
