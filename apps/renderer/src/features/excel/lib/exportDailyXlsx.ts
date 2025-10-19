@@ -68,5 +68,6 @@ export async function exportDailyXlsx(date: string, items: MaterialRecord[]) {
   a.href = URL.createObjectURL(blob);
   a.download = `stockwise_${date}.xlsx`;
   a.click();
+
   URL.revokeObjectURL(a.href);
 }
