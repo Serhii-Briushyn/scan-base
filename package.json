@@ -21,6 +21,7 @@
     "start:prod": "cross-env VITE_DEV_SERVER_URL= electron apps/main/dist/index.cjs"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "dexie": "^4.2.0",
     "dexie-react-hooks": "^4.2.0",
     "electron-updater": "^6.6.2",

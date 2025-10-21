@@ -1,20 +1,27 @@
-import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import toast from "react-hot-toast";
 
 import { db } from "@shared/db";
-import { formatYMD, ymd } from "@shared/utils/date";
+import { formatYMD } from "@shared/utils/date";
 import { exportDailyXlsx } from "@features/excel/lib/exportDailyXlsx";
 import { MSG_DELETE_ERR } from "@features/material/lib/messages";
 import { showErrorToast } from "@shared/utils/showErrorToast";
 
-import styles from "../MainPage.module.css";
 import { RecordsControls } from "./RecordsControls";
 import { RecordsTable } from "./RecordsTable";
+import styles from "../MainPage.module.css";
 
-export const RecordsSection = () => {
-  const [date, setDate] = useState(ymd());
+type Props = {
+  date: string;
+  lastAddedId: string | null;
+  onChangeDate: (d: string) => void;
+};
 
+export const RecordsSection: React.FC<Props> = ({
+  date,
+  lastAddedId,
+  onChangeDate,
+}) => {
   const handleDelete = async (id: string) => {
     try {
       await db.records.delete(id);
@@ -42,14 +49,20 @@ export const RecordsSection = () => {
     <section className={styles.rec_section}>
       <RecordsControls
         date={date}
-        onChangeDate={setDate}
+        onChangeDate={onChangeDate}
         onExport={() => exportDailyXlsx(date, items)}
         canExport={items.length > 0}
       />
+
       <p>
         Materiálov za {formatYMD(date, ".")} ({items.length})
       </p>
-      <RecordsTable items={items} onDelete={handleDelete} />
+
+      <RecordsTable
+        items={items}
+        onDelete={handleDelete}
+        lastAddedId={lastAddedId}
+      />
     </section>
   );
 };

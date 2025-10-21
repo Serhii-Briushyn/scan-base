@@ -15,11 +15,6 @@
   margin-bottom: 16px;
 }
 
-.scan_section:focus-within [data-scan-line] {
-  animation-play-state: running;
-  opacity: 1;
-}
-
 .rec_section {
   display: flex;
   flex-direction: column;
@@ -76,6 +71,15 @@
   box-shadow: 0 0 8px 2px rgba(255, 206, 0, 0.55),
     0 0 18px 4px rgba(255, 206, 0, 0.35);
   animation: scan 2s ease-in-out infinite;
+  animation-play-state: paused;
+  opacity: 0.35;
+}
+
+.scanner_line.isActive {
+  animation-play-state: running;
+  opacity: 1;
+}
+.scanner_line.isLocked {
   animation-play-state: paused;
   opacity: 0.35;
 }
@@ -230,4 +234,18 @@
 
 .btn_remove:hover svg {
   color: var(--color-blue);
+}
+
+.just_added {
+  outline: 2px solid var(--color-yellow);
+  animation: rowFlash 1.2s ease-out 1;
+}
+
+@keyframes rowFlash {
+  0% {
+    background: rgba(254, 214, 49, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
 }

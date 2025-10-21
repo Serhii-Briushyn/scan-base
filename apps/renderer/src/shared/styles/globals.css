@@ -13,6 +13,7 @@ div,
 section,
 input {
   box-sizing: border-box;
+  outline: none;
 }
 
 ul {

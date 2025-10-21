@@ -6,6 +6,7 @@ import {
   MSG_NO_DIMS,
   MSG_DELETE_ERR,
   MSG_SAVE_ERR,
+  MSG_SCANNER_LOCKED,
 } from "@features/material/lib/messages";
 
 const ALLOWED = new Set<string>([
@@ -14,6 +15,7 @@ const ALLOWED = new Set<string>([
   MSG_SAVE_ERR,
   MSG_DELETE_ERR,
   MSG_BAD_CODE,
+  MSG_SCANNER_LOCKED,
 ]);
 
 export function showErrorToast(err: unknown, fallback?: string) {

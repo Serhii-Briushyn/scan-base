@@ -1,6 +1,8 @@
 import ExcelJS from "exceljs";
 
-import { MaterialRecord } from "@shared/types/material";
+import { excelDateFromYMD, formatYMD } from "@shared/utils/date";
+
+import type { MaterialRecord } from "@shared/types/material";
 
 function materialCells(m: MaterialRecord["material"]) {
   return [
@@ -16,7 +18,7 @@ function materialCells(m: MaterialRecord["material"]) {
 
 export async function exportDailyXlsx(date: string, items: MaterialRecord[]) {
   const wb = new ExcelJS.Workbook();
-  const ws = wb.addWorksheet("StockWise");
+  const ws = wb.addWorksheet("ScanBase");
 
   const HEADER = [
     "Dátum",
@@ -51,13 +53,13 @@ export async function exportDailyXlsx(date: string, items: MaterialRecord[]) {
   });
 
   for (const rec of items) {
-    const jsDate = new Date(`${rec.date}T00:00:00`);
+    const jsDate = excelDateFromYMD(rec.date);
     const row = [jsDate, ...materialCells(rec.material)];
     ws.addRow(row);
   }
 
   const dateCol = ws.getColumn(1);
-  dateCol.numFmt = "yyyy-mm-dd";
+  dateCol.numFmt = "dd-mm-yyyy";
 
   const buffer = await wb.xlsx.writeBuffer();
   const blob = new Blob([buffer], {
@@ -66,7 +68,7 @@ export async function exportDailyXlsx(date: string, items: MaterialRecord[]) {
 
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `stockwise_${date}.xlsx`;
+  a.download = `materials_${formatYMD(date, "-")}.xlsx`;
   a.click();
 
   URL.revokeObjectURL(a.href);
