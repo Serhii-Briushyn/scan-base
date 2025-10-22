@@ -15,7 +15,7 @@ export function playSound(
   }
   lastPlayed[name] = now;
 
-  const audio = new Audio(`/sounds/${name}.mp3`);
+  const audio = new Audio(`sounds/${name}.mp3`);
   if (opts?.volume != null) audio.volume = opts.volume;
   else audio.volume = 0.3;
 
