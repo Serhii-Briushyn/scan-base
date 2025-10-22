@@ -1,7 +1,7 @@
 {
   "name": "scan-base",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Warehouse material tracking and data export tool",
   "author": "Serhii Briushyn",
   "main": "apps/main/dist/index.cjs",
