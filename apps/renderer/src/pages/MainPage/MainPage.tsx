@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import toast from "react-hot-toast";
 
 import { showErrorToast } from "@shared/utils/showErrorToast";
+import { playSound } from "@shared/utils/playSound";
 import { ymd } from "@shared/utils/date";
 import { db } from "@shared/db";
 import {
@@ -37,6 +38,7 @@ export const MainPage = () => {
         });
         setLastAddedId(id);
         toast.success("Uložené ✅");
+        playSound("success");
       } catch (err) {
         showErrorToast(err, MSG_SAVE_ERR);
       }
